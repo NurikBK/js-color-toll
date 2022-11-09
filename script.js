@@ -4,6 +4,8 @@ const slider = document.querySelector('#slider');
 
 const sliderText = document.querySelector('#sliderText');
 
+const alteredColorEl = document.querySelector('#alteredColor');
+
 const isValidHex = (hex) => {
   if (!hex) return false;
 
@@ -24,8 +26,7 @@ hexInput.addEventListener('keyup', () => {
 //  convert hex to rgb
 const convertHexToRgb = (hex) => {
   if (!isValidHex(hex)) return null;
-  let strippedHex = hex /*trim()*/
-    .replace('#', '');
+  let strippedHex = hex.replace('#', '');
 
   if (strippedHex.length === 3) {
     strippedHex = strippedHex
@@ -43,7 +44,28 @@ const convertHexToRgb = (hex) => {
   return { r, g, b };
 };
 
+const convertRGBToHex = (r, g, b) => {
+  const firstPair = ('0' + r.toString(16)).slice(-2);
+  const secondPair = ('0' + g.toString(16)).slice(-2);
+  const thirdPair = ('0' + b.toString(16)).slice(-2);
+
+  const hex = '#' + firstPair + secondPair + thirdPair;
+  return hex;
+};
+
+const alterColor = (hex, percentage) => {
+  const { r, g, b } = convertHexToRgb(hex);
+
+  const amount = Math.floor((percentage / 100) * 255);
+
+  const newR = r + amount;
+  const newG = g + amount;
+  const newB = b + amount;
+
+  alteredColorEl.style.backgroundColor = convertRGBToHex(newR, newG, newB);
+};
+
 slider.addEventListener('input', () => {
-  console.log(slider.value);
   sliderText.innerText = `${slider.value}%`;
+  alterColor(hexInput.value, slider.value);
 });
