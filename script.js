@@ -16,28 +16,27 @@ hexInput.addEventListener('keyup', () => {
   const strippedHex = hexValue.replace('#', '');
 
   inputColor.style.backgroundColor = `#${strippedHex}`;
-  console.log(convertHexToRgb(hexInput.value));
 });
 
 //  convert hex to rgb
 const convertHexToRgb = (hex) => {
-  const strippedHex = hex.replace('#', '');
+  if (!isValidHex(hex)) return null;
+  let strippedHex = hex/*trim()*/.replace('#', '');
 
   if (strippedHex.length === 3) {
-    doubleStrippedHex = strippedHex
+    strippedHex = strippedHex
       .split('')
       .map((value) => {
         return value + value;
       })
       .join('');
-    const r = parseInt(doubleStrippedHex.substring(0, 2), 16);
-    const g = parseInt(doubleStrippedHex.substring(2, 4), 16);
-    const b = parseInt(doubleStrippedHex.substring(4, 6), 16);
-    return { r, g, b };
   }
+
   const r = parseInt(strippedHex.substring(0, 2), 16);
   const g = parseInt(strippedHex.substring(2, 4), 16);
   const b = parseInt(strippedHex.substring(4, 6), 16);
 
   return { r, g, b };
 };
+
+console.log(convertHexToRgb('000'));
