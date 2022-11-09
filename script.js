@@ -1,5 +1,8 @@
 const hexInput = document.querySelector('#hexInput');
 const inputColor = document.querySelector('#inputColor');
+const slider = document.querySelector('#slider');
+
+const sliderText = document.querySelector('#sliderText');
 
 const isValidHex = (hex) => {
   if (!hex) return false;
@@ -21,7 +24,8 @@ hexInput.addEventListener('keyup', () => {
 //  convert hex to rgb
 const convertHexToRgb = (hex) => {
   if (!isValidHex(hex)) return null;
-  let strippedHex = hex/*trim()*/.replace('#', '');
+  let strippedHex = hex /*trim()*/
+    .replace('#', '');
 
   if (strippedHex.length === 3) {
     strippedHex = strippedHex
@@ -39,4 +43,7 @@ const convertHexToRgb = (hex) => {
   return { r, g, b };
 };
 
-console.log(convertHexToRgb('000'));
+slider.addEventListener('input', () => {
+  console.log(slider.value);
+  sliderText.innerText = `${slider.value}%`;
+});
