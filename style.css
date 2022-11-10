@@ -59,6 +59,7 @@ input[type='text'] {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-bottom: 25px;
 }
 
 .toggle-text {
@@ -91,5 +92,5 @@ input[type='text'] {
 }
 
 .unselected {
-  color: rgb(122, 119, 119);
+  opacity: 0.25;
 }
