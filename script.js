@@ -12,6 +12,7 @@ toggleBtn.addEventListener('click', () => {
   toggleBtn.classList.toggle('toggled');
   lightenText.classList.toggle('unselected');
   darkenText.classList.toggle('unselected');
+  reset();
 });
 
 slider.addEventListener('input', () => {
@@ -39,6 +40,7 @@ hexInput.addEventListener('keyup', () => {
   const strippedHex = hexValue.replace('#', '');
 
   inputColor.style.backgroundColor = `#${strippedHex}`;
+  reset();
 });
 
 const convertHexToRGB = (hex) => {
@@ -90,4 +92,11 @@ const increaseWithin0To255 = (hex, amount) => {
   // if(newHex < 0) return 0;
   // return newHex;
   return Math.min(255, Math.max(0, hex + amount));
+};
+
+const reset = () => {
+  slider.value = 0;
+  sliderText.innerText = '0%';
+  alteredColor.style.backgroundColor = hexInput.value;
+  alteredColorText.innerText = `Altered Color: ${hexInput.value}`;
 };
