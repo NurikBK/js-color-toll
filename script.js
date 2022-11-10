@@ -8,6 +8,22 @@ const toggleBtn = document.querySelector('#toggleBtn');
 const lightenText = document.querySelector('#lightenText');
 const darkenText = document.querySelector('#darkenText');
 
+toggleBtn.addEventListener('click', () => {
+  toggleBtn.classList.toggle('toggled');
+  lightenText.classList.toggle('unselected');
+  darkenText.classList.toggle('unselected');
+});
+
+slider.addEventListener('input', () => {
+  if (!isValidHex(hexInput.value)) return null;
+  sliderText.innerText = `${slider.value}%`;
+  const valueAddition = toggleBtn.classList.contains('toggled')
+    ? -slider.value
+    : slider.value;
+
+  alterColor(hexInput.value, valueAddition);
+});
+
 const isValidHex = (hex) => {
   if (!hex) return false;
 
@@ -15,7 +31,7 @@ const isValidHex = (hex) => {
 
   return strippedHex.length === 3 || strippedHex.length === 6;
 };
-// change bgColor if input is valid
+
 hexInput.addEventListener('keyup', () => {
   const hexValue = hexInput.value;
   if (!isValidHex(hexValue)) return;
@@ -25,7 +41,6 @@ hexInput.addEventListener('keyup', () => {
   inputColor.style.backgroundColor = `#${strippedHex}`;
 });
 
-//  convert hex to rgb
 const convertHexToRGB = (hex) => {
   if (!isValidHex(hex)) return null;
   let strippedHex = hex.replace('#', '');
@@ -76,15 +91,3 @@ const increaseWithin0To255 = (hex, amount) => {
   // return newHex;
   return Math.min(255, Math.max(0, hex + amount));
 };
-
-slider.addEventListener('input', () => {
-  if (!isValidHex(hexInput.value)) return null;
-  sliderText.innerText = `${slider.value}%`;
-  alterColor(hexInput.value, slider.value);
-});
-
-toggleBtn.addEventListener('click', () => {
-  toggleBtn.classList.toggle('toggled');
-  lightenText.classList.toggle('unselected');
-  darkenText.classList.toggle('unselected');
-});
