@@ -24,6 +24,7 @@ body {
   background-color: #292f46;
   border-radius: 3px;
   width: 60%;
+  min-width: 250px;
 }
 
 .title {
@@ -52,4 +53,38 @@ input[type='text'] {
   width: 80%;
   background-color: #c6d5ac;
   margin-bottom: 25px;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toggle-text {
+  font-size: 18px;
+}
+
+.toggle-btn {
+  position: relative;
+  height: 34px;
+  width: 64px;
+  background-color: gray;
+  border-radius: 30px;
+}
+
+.inner-circle {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  transition: all 250ms;
+  top: 2px;
+  left: 2px;
+}
+
+.toggle-btn.toggled > .inner-circle {
+  transform: translateX(30px);
+  background-color: #333;
 }
