@@ -71,6 +71,7 @@ input[type='text'] {
   width: 64px;
   background-color: gray;
   border-radius: 30px;
+  cursor: pointer;
 }
 
 .inner-circle {
@@ -79,7 +80,7 @@ input[type='text'] {
   height: 30px;
   border-radius: 50%;
   background-color: white;
-  transition: all 250ms;
+  transition: all 0.5s ease-in-out;
   top: 2px;
   left: 2px;
 }
@@ -87,4 +88,8 @@ input[type='text'] {
 .toggle-btn.toggled > .inner-circle {
   transform: translateX(30px);
   background-color: #333;
+}
+
+.unselected {
+  color: rgb(122, 119, 119);
 }
