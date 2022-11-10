@@ -16,7 +16,7 @@ body {
 }
 
 .container {
-  padding: 0 10px;
+  padding: 30px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -27,7 +27,7 @@ body {
 }
 
 .title {
-  margin: 20px;
+  margin-bottom: 20px;
   color: #d6d5ac;
 }
 
