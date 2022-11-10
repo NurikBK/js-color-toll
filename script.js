@@ -4,7 +4,7 @@ const slider = document.querySelector('#slider');
 
 const sliderText = document.querySelector('#sliderText');
 
-const alteredColorEl = document.querySelector('#alteredColor');
+const alteredColor = document.querySelector('#alteredColor');
 
 const isValidHex = (hex) => {
   if (!hex) return false;
@@ -62,7 +62,7 @@ const alterColor = (hex, percentage) => {
   const newG = increaseWithin0To255(g, amount);
   const newB = increaseWithin0To255(b, amount);
 
-  alteredColorEl.style.backgroundColor = convertRGBToHex(newR, newG, newB);
+  alteredColor.style.backgroundColor = convertRGBToHex(newR, newG, newB);
 };
 
 const increaseWithin0To255 = (hex, amount) => {
